@@ -1,3 +1,3 @@
 #!/bin/bash
-to_dec(){ local n=$1 b=$2 r=0 p=1; for((i=${#n}-1;i>=0;i--)); do d=$(($(printf "%d" "'${n:$i:1}")-97)); r=$((r+d*p)); p=$((p*${#b})); done; echo $r; }
-from_dec(){ local n=$1 b=$2 r=""; while [ $n -gt 0 ]; do r="${b:$((n%${#b})):1}$r"; n=$((n/${#b})); done; echo "${r:-${b:0:1}}"; }; from_dec $(($(to_dec "$WATER" "water")+$(to_dec "$STIR" "stir."))) "bestchol"
+tr(){ local s=$1 f=$2 t=$3; while [ -n "$f" ]; do s=${s//${f:0:1}/${t:0:1}}; f=${f:1}; t=${t:1}; done; echo "$s"; }
+w=$(tr "$WATER" "water" "01234") s=$(tr "$STIR" "stir." "01234") a=$((5#$w+5#$s)) r=""; while [ $a -gt 0 ]; do r="${r}${8:$((a%8)):1}"; a=$((a/8)); done; [ -z "$r" ] && r="${8:0:1}"; echo "$r" | rev
