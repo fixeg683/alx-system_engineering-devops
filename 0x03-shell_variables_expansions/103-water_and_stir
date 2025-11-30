@@ -1,0 +1,3 @@
+#!/bin/bash
+echo $WATER | tr 'watr' '0123'
+echo $STIR | tr 'stir.' '01234'
