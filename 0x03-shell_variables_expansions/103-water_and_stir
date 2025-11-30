@@ -1,3 +1,2 @@
 #!/bin/bash
-echo $WATER | tr 'watr' '0123'
-echo $STIR | tr 'stir.' '01234'
+echo $(echo $WATER | tr 'watr' '0123') $(echo $STIR | tr 'stir.' '01234') | awk '{print $1 + $2}' | tr '01234567' 'bestchol'
