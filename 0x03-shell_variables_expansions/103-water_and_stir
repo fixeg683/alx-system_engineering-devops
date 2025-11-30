@@ -1,3 +1,2 @@
 #!/bin/bash
-tr(){ local s=$1 f=$2 t=$3; while [ -n "$f" ]; do s=${s//${f:0:1}/${t:0:1}}; f=${f:1}; t=${t:1}; done; echo "$s"; }
-w=$(tr "$WATER" "water" "01234") s=$(tr "$STIR" "stir." "01234") a=$((5#$w+5#$s)) r=""; while [ $a -gt 0 ]; do r="${r}${8:$((a%8)):1}"; a=$((a/8)); done; [ -z "$r" ] && r="${8:0:1}"; echo "$r" | rev
+echo $(echo $WATER | tr 'watr' '0123') $(echo $STIR | tr 'stir.' '01234') | awk '{print $1 + $2}' | tr '01234567' 'bestchol'
